@@ -171,11 +171,11 @@ export function PortfolioComponent() {
                         className="w-24 h-24 rounded-full border-2 border-white"
                       />
                       <p>
-                        I'm a passionate Software Engineer and Data Scientist
+                        I&apos;m a passionate Software Engineer and Data Scientist
                         with a strong background in full-stack development,
                         machine learning, and data analysis. Currently pursuing
-                        my Master's in Computer Science at Purdue University
-                        Northwest, I'm always eager to take on new challenges
+                        my Master&apos;s in Computer Science at Purdue University
+                        Northwest, I&apos;m always eager to take on new challenges
                         and contribute to innovative projects.
                       </p>
                     </div>
@@ -244,7 +244,7 @@ export function PortfolioComponent() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="flex flex-wrap gap-2">
-                    {skills.map((skill, index) => (
+                    {skills.map((skill) => (
                       <Badge
                         key={skill}
                         variant="secondary"
@@ -257,7 +257,7 @@ export function PortfolioComponent() {
                 </Card>
               </TabsContent>
               <TabsContent value="projects" className="space-y-4">
-                {["SharePrompt", "SentinelSafe"].map((project, index) => (
+                {["SharePrompt", "SentinelSafe"].map((project) => (
                   <ProjectCard
                     key={project}
                     title={project}
