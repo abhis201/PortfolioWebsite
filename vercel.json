@@ -4,12 +4,6 @@
     "outputDirectory": "dist",
     "rewrites": [
       { "source": "/api/(.*)", "destination": "/index.js" },
-      { "source": "/(.*)", "destination": "/public/$1" }
-    ],
-    "routes": [
-      { "handle": "filesystem" },
-      { "src": "/api/(.*)", "dest": "/index.js" },
-      { "src": "/(.*)", "dest": "/public/index.html" }
+      { "source": "/(.*)", "destination": "/public/index.html" }
     ]
   }
-  
