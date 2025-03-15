@@ -42,12 +42,19 @@ var storage = new MemStorage();
 // shared/schema.ts
 import { pgTable, text, serial, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
+var users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  username: varchar("username", { length: 100 }).notNull().unique(),
+  password: text("password").notNull()
+  // Add any other fields your User type needs
+});
 var messages = pgTable("messages", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull(),
   email: varchar("email", { length: 255 }).notNull(),
   message: text("message").notNull()
 });
+var insertUserSchema = createInsertSchema(users);
 var insertMessageSchema = createInsertSchema(messages).pick({
   name: true,
   email: true,
