@@ -57,16 +57,18 @@ app.use((req, res, next) => {
 
   // Serve static files in production
   if (process.env.NODE_ENV === "production") {
-    const publicPath = path.join(__dirname, "public");
-    
-    console.log(`Serving static files from: ${publicPath}`);
-    
-    // Serve frontend files
-    app.use(express.static(publicPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(publicPath, "index.html"));
-    });
-  }
+    // Check if running in Vercel
+    if (process.env.VERCEL) {
+      console.log("Running in Vercel - static files handled by Vercel");
+    } else {
+      // For non-Vercel environments (like regular Node.js)
+      const publicPath = path.join(__dirname, "public");
+      console.log(`Serving static files from: ${publicPath}`);
+      app.use(express.static(publicPath));
+      app.get("*", (req, res) => {
+        res.sendFile(path.join(publicPath, "index.html"));
+      });
+    }
 
   // Start the server
   const port = process.env.PORT || 3000;
