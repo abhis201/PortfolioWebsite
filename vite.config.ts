@@ -30,7 +30,7 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
-    emptyOutDir: true,
+    outDir: path.resolve(__dirname, "dist/public"), // Changed from client/dist to dist/public
+    emptyOutDir: false, // Don't empty the whole dist dir, just the public folder
   },
 });
