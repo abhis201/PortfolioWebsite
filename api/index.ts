@@ -55,7 +55,7 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 });
 
 // Vercel serverless handler
-export default async function handler(req, res) {
+export default async function handler(req: Request, res: Response) {
   await getRoutes();
   
   return new Promise((resolve) => {
