@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'wouter';
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,9 +13,6 @@ export default function Nav() {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    if (sectionId === 'blog') {
-      return; // Don't scroll for blog link
-    }
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -36,22 +32,18 @@ export default function Nav() {
           whileHover={{ scale: 1.1 }}
           className="text-xl font-bold"
         >
-          <Link href="/">Abhishek S.</Link>
+          Abhishek S.
         </motion.div>
 
         <ul className="hidden md:flex space-x-8">
-          {['About', 'Skills', 'Experience', 'Projects', 'Contact', 'Blog'].map((item) => (
+          {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
             <motion.li
               key={item}
               whileHover={{ scale: 1.1 }}
               className="relative group cursor-pointer"
               onClick={() => scrollToSection(item.toLowerCase())}
             >
-              {item === 'Blog' ? (
-                <Link href="/blog">{item}</Link>
-              ) : (
-                item
-              )}
+              {item}
               <motion.span
                 className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left"
                 initial={{ scaleX: 0 }}

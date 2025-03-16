@@ -1,7 +1,5 @@
 // server/index.ts
-import express from "express";
-import path2 from "path";
-import { fileURLToPath } from "url";
+import express2 from "express";
 
 // server/routes.ts
 import { createServer } from "http";
@@ -42,19 +40,12 @@ var storage = new MemStorage();
 // shared/schema.ts
 import { pgTable, text, serial, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
-var users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  username: varchar("username", { length: 100 }).notNull().unique(),
-  password: text("password").notNull()
-  // Add any other fields your User type needs
-});
 var messages = pgTable("messages", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull(),
   email: varchar("email", { length: 255 }).notNull(),
   message: text("message").notNull()
 });
-var insertUserSchema = createInsertSchema(users);
 var insertMessageSchema = createInsertSchema(messages).pick({
   name: true,
   email: true,
@@ -64,83 +55,6 @@ var insertMessageSchema = createInsertSchema(messages).pick({
 // server/routes.ts
 import { ZodError } from "zod";
 import nodemailer from "nodemailer";
-
-// client/src/lib/mdx.ts
-import fs from "fs";
-import path from "path";
-var BLOG_PATH = path.join(process.cwd(), "client/content/blog");
-function parseFrontmatter(content) {
-  const frontmatterRegex = /^---\n([\s\S]*?)\n---/;
-  const match = frontmatterRegex.exec(content);
-  if (!match) {
-    return {
-      frontmatter: {},
-      content
-    };
-  }
-  const frontmatter = match[1].split("\n").reduce((acc, curr) => {
-    const [key, ...value] = curr.split(":");
-    if (key && value) {
-      acc[key.trim()] = value.join(":").trim().replace(/^"(.*)"$/, "$1");
-    }
-    return acc;
-  }, {});
-  const contentWithoutFrontmatter = content.replace(frontmatterRegex, "").trim();
-  return {
-    frontmatter,
-    content: contentWithoutFrontmatter
-  };
-}
-async function getAllPosts() {
-  try {
-    console.log("Reading blog posts from:", BLOG_PATH);
-    const files = fs.readdirSync(BLOG_PATH);
-    console.log("Found files:", files);
-    const posts = files.filter((file) => file.endsWith(".mdx") || file.endsWith(".md")).map((file) => {
-      try {
-        const filePath = path.join(BLOG_PATH, file);
-        console.log("Processing file:", filePath);
-        const fileContents = fs.readFileSync(filePath, "utf8");
-        const { frontmatter, content } = parseFrontmatter(fileContents);
-        console.log("Parsed frontmatter:", frontmatter);
-        return {
-          slug: file.replace(/\.mdx?$/, ""),
-          frontmatter,
-          content
-          // We'll add markdown parsing once we can install the dependency
-        };
-      } catch (error) {
-        console.error(`Error processing file ${file}:`, error);
-        return null;
-      }
-    }).filter((post) => post !== null).sort((a, b) => {
-      return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
-    });
-    return posts;
-  } catch (error) {
-    console.error("Error reading blog posts:", error);
-    return [];
-  }
-}
-async function getPostBySlug(slug) {
-  try {
-    const filePath = path.join(BLOG_PATH, `${slug}.mdx`);
-    console.log("Reading blog post:", filePath);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { frontmatter, content } = parseFrontmatter(fileContents);
-    return {
-      slug,
-      frontmatter,
-      content
-      // We'll add markdown parsing once we can install the dependency
-    };
-  } catch (error) {
-    console.error(`Error reading blog post ${slug}:`, error);
-    return null;
-  }
-}
-
-// server/routes.ts
 async function registerRoutes(app2) {
   app2.post("/api/contact", async (req, res) => {
     try {
@@ -175,41 +89,123 @@ async function registerRoutes(app2) {
       }
     }
   });
-  app2.get("/api/posts", async (_req, res) => {
-    try {
-      console.log("Fetching all blog posts");
-      const posts = await getAllPosts();
-      console.log("Found posts:", posts.length);
-      res.json(posts);
-    } catch (error) {
-      console.error("Error fetching blog posts:", error);
-      res.status(500).json({ message: "Failed to fetch blog posts" });
-    }
-  });
-  app2.get("/api/posts/:slug", async (req, res) => {
-    try {
-      console.log("Fetching blog post:", req.params.slug);
-      const post = await getPostBySlug(req.params.slug);
-      if (!post) {
-        res.status(404).json({ message: "Blog post not found" });
-        return;
-      }
-      res.json(post);
-    } catch (error) {
-      console.error("Error fetching blog post:", error);
-      res.status(500).json({ message: "Failed to fetch blog post" });
-    }
-  });
   const httpServer = createServer(app2);
   return httpServer;
 }
 
-// server/index.ts
+// server/vite.ts
+import express from "express";
+import fs from "fs";
+import path2, { dirname as dirname2 } from "path";
+import { fileURLToPath as fileURLToPath2 } from "url";
+import { createServer as createViteServer, createLogger } from "vite";
+
+// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
+import path, { dirname } from "path";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import { fileURLToPath } from "url";
 var __filename = fileURLToPath(import.meta.url);
-var __dirname = path2.dirname(__filename);
-var app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+var __dirname = dirname(__filename);
+var vite_config_default = defineConfig({
+  plugins: [
+    react(),
+    runtimeErrorOverlay(),
+    themePlugin(),
+    ...process.env.NODE_ENV !== "production" && process.env.REPL_ID !== void 0 ? [
+      await import("@replit/vite-plugin-cartographer").then(
+        (m) => m.cartographer()
+      )
+    ] : []
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "client", "src"),
+      "@shared": path.resolve(__dirname, "shared")
+    }
+  },
+  root: path.resolve(__dirname, "client"),
+  build: {
+    outDir: path.resolve(__dirname, "dist/public"),
+    emptyOutDir: true
+  }
+});
+
+// server/vite.ts
+import { nanoid } from "nanoid";
+var __filename2 = fileURLToPath2(import.meta.url);
+var __dirname2 = dirname2(__filename2);
+var viteLogger = createLogger();
+function log(message, source = "express") {
+  const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  });
+  console.log(`${formattedTime} [${source}] ${message}`);
+}
+async function setupVite(app2, server) {
+  const serverOptions = {
+    middlewareMode: true,
+    hmr: { server },
+    allowedHosts: true
+  };
+  const vite = await createViteServer({
+    ...vite_config_default,
+    configFile: false,
+    customLogger: {
+      ...viteLogger,
+      error: (msg, options) => {
+        viteLogger.error(msg, options);
+        process.exit(1);
+      }
+    },
+    server: serverOptions,
+    appType: "custom"
+  });
+  app2.use(vite.middlewares);
+  app2.use("*", async (req, res, next) => {
+    const url = req.originalUrl;
+    try {
+      const clientTemplate = path2.resolve(
+        __dirname2,
+        "..",
+        "client",
+        "index.html"
+      );
+      let template = await fs.promises.readFile(clientTemplate, "utf-8");
+      template = template.replace(
+        `src="/src/main.tsx"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
+      );
+      const page = await vite.transformIndexHtml(url, template);
+      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+    } catch (e) {
+      vite.ssrFixStacktrace(e);
+      next(e);
+    }
+  });
+}
+function serveStatic(app2) {
+  const distPath = path2.resolve(__dirname2, "public");
+  if (!fs.existsSync(distPath)) {
+    throw new Error(
+      `Could not find the build directory: ${distPath}, make sure to build the client first`
+    );
+  }
+  app2.use(express.static(distPath));
+  app2.use("*", (_req, res) => {
+    res.sendFile(path2.resolve(distPath, "index.html"));
+  });
+}
+
+// server/index.ts
+var app = express2();
+app.use(express2.json());
+app.use(express2.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   const start = Date.now();
   const path3 = req.path;
@@ -229,29 +225,35 @@ app.use((req, res, next) => {
       if (logLine.length > 80) {
         logLine = logLine.slice(0, 79) + "\u2026";
       }
-      console.log(logLine);
+      log(logLine);
     }
   });
   next();
 });
 (async () => {
-  await registerRoutes(app);
+  const server = await registerRoutes(app);
   app.use((err, _req, res, _next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
     res.status(status).json({ message });
     throw err;
   });
-  if (process.env.NODE_ENV === "production") {
-    const publicPath = path2.join(__dirname, "public");
-    console.log(`Serving static files from: ${publicPath}`);
-    app.use(express.static(publicPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path2.join(publicPath, "index.html"));
-    });
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
   }
-  const port = process.env.PORT || 3e3;
-  app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-  });
+  const port = 8080;
+  try {
+    server.listen(port, "localhost", () => {
+      log(`serving at http://localhost:${port}`);
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      log(`Failed to start server: ${error.message}`);
+    } else {
+      log(`Failed to start server: ${String(error)}`);
+    }
+    process.exit(1);
+  }
 })();

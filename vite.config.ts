@@ -31,15 +31,6 @@ export default defineConfig({
   root: path.resolve(__dirname, "client"),
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
-    emptyOutDir: false,
-    rollupOptions: {
-      external: [
-        'zod',
-        'drizzle-orm', 
-        'drizzle-zod',
-        'nodemailer',
-        '@neondatabase/serverless'
-      ]
-    }
+    emptyOutDir: true,
   },
 });
