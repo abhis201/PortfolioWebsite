@@ -1,18 +1,22 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
     title: "SharePrompt",
     description: "A modern AI prompt-sharing platform built with Next.js, MongoDB, and TailwindCSS featuring glassmorphism design and secure Google authentication.",
     image: "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8",
-    tags: ["Next.js", "MongoDB", "TailwindCSS", "NextAuth"]
+    tags: ["Next.js", "MongoDB", "TailwindCSS", "NextAuth"],
+    url: "https://share-prompt-azure.vercel.app/"
   },
   {
     title: "SentinelSafe",
     description: "Risk assessment model for enhancing school safety using React.js and Recoil, leveraging CNN and deep neural networks with 85% accuracy.",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
-    tags: ["React.js", "Recoil", "CNN", "Machine Learning"]
+    tags: ["React.js", "Recoil", "CNN", "Machine Learning"],
+    url: "https://www.publicsafetyinfo.com/mass-shooting/index.html"
   }
 ];
 
@@ -52,7 +56,7 @@ export default function Projects() {
                   <p className="text-muted-foreground mb-4">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -62,6 +66,16 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
+                  {project.url && (
+                    <Button
+                      onClick={() => window.open(project.url, '_blank')}
+                      className="w-full"
+                      variant="outline"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Visit Project
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

@@ -6,6 +6,7 @@ import Skills from "@/components/skills";
 import Experience from "@/components/experience";
 import Projects from "@/components/projects";
 import Contact from "@/components/contact";
+import BlogPreview from "@/components/blog-preview";
 import Cursor from "@/components/cursor";
 import ParticleBackground from "@/components/particle-background";
 import { motion } from "framer-motion";
@@ -36,6 +37,7 @@ export default function Home() {
         <Skills />
         <Experience />
         <Projects />
+        <BlogPreview />
         <Contact />
       </main>
     </motion.div>
