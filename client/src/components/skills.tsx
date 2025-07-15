@@ -1,57 +1,73 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import {
-  Code2,
-  FileCode2,
-  BrainCircuit,
-  Terminal,
-  Database,
-  Server,
-  Cloud,
-  GitBranch,
-  Container,
-  Smartphone
-} from 'lucide-react';
+  FaJava,
+  FaPython,
+  FaJsSquare,
+  FaReact,
+  FaNodeJs,
+  FaAws,
+  FaDocker,
+  FaGitAlt,
+  FaCloud,
+  FaDatabase,
+  FaMicrosoft,
+  FaJenkins,
+  FaCuttlefish,
+  FaHtml5,
+  FaCss3Alt,
+  FaGithub,
+  FaAndroid,
+  FaApple,
+  FaCode,
+  FaCogs,
+} from 'react-icons/fa';
+import { SiCplusplus, SiNextdotjs, SiTailwindcss, SiSpring, SiMongodb, SiPostgresql, SiApachecassandra, SiKubernetes, SiSharp, SiGooglecloud, SiApachekafka, SiTypescript } from 'react-icons/si';
+import { ApacheCamelIcon } from './ui/ApacheCamelIcon';
 
 const skillCategories = [
   {
     title: "Languages",
     skills: [
-      { name: "Java", icon: FileCode2 },
-      { name: "C#", icon: Code2 },
-      { name: "JavaScript", icon: BrainCircuit },
-      { name: "Python", icon: Terminal },
-      { name: "C++", icon: FileCode2 }
+      { name: "Java", icon: FaJava, color: '#007396' },
+      { name: "C#", icon: SiSharp, color: '#239120' },
+      { name: "JavaScript", icon: FaJsSquare, color: '#F7DF1E' },
+      { name: "TypeScript", icon: SiTypescript, color: '#3178C6' },
+      { name: "Python", icon: FaPython, color: '#3776AB' },
+      { name: "C++", icon: SiCplusplus, color: '#00599C' }
     ]
   },
   {
     title: "Frontend",
     skills: [
-      { name: "React", icon: Code2 },
-      { name: "Next.js", icon: Terminal },
-      { name: "React Native", icon: Smartphone },
-      { name: "TailwindCSS", icon: FileCode2 }
+      { name: "React", icon: FaReact, color: '#61DAFB' },
+      { name: "Next.js", icon: SiNextdotjs, color: '#000000' },
+      { name: "React Native", icon: FaReact, color: '#61DAFB' },
+      { name: "TailwindCSS", icon: SiTailwindcss, color: '#06B6D4' }
     ]
   },
   {
     title: "Backend",
     skills: [
-      { name: "Node.js", icon: Server },
-      { name: "Express", icon: Server },
-      { name: "Spring", icon: GitBranch },
-      { name: "MongoDB", icon: Database },
-      { name: "PostgreSQL", icon: Database },
-      { name: "Cassandra", icon: Database }
+      { name: "Node.js", icon: FaNodeJs, color: '#339933' },
+      { name: "Express", icon: FaNodeJs, color: '#000000' },
+      { name: "Spring", icon: SiSpring, color: '#6DB33F' },
+      { name: "MongoDB", icon: SiMongodb, color: '#47A248' },
+      { name: "PostgreSQL", icon: SiPostgresql, color: '#336791' },
+      { name: "Cassandra", icon: SiApachecassandra, color: '#1287B1' },
+      { name: "Kafka", icon: SiApachekafka, color: '#231F20' },
+      { name: "Camel", icon: ApacheCamelIcon, color: '#f69923' },
+      { name: "Freemarker", icon: FaCode, color: '#005F87' }
     ]
   },
   {
     title: "Cloud & DevOps",
     skills: [
-      { name: "Azure", icon: Cloud },
-      { name: "AWS", icon: Cloud },
-      { name: "Kubernetes", icon: Container },
-      { name: "Docker", icon: Container },
-      { name: "Jenkins", icon: GitBranch }
+      { name: "Google Cloud", icon: SiGooglecloud, color: '#4285F4' },
+      { name: "AWS", icon: FaAws, color: '#FF9900' },
+      { name: "Kubernetes", icon: SiKubernetes, color: '#326CE5' },
+      { name: "Docker", icon: FaDocker, color: '#2496ED' },
+      { name: "CI/CD", icon: FaCogs, color: '#6366F1' }
     ]
   }
 ];
@@ -85,7 +101,7 @@ export default function Skills() {
                       whileHover={{ scale: 1.1 }}
                       className="flex flex-col items-center justify-center gap-2"
                     >
-                      <skill.icon className="w-8 h-8 text-primary" />
+                      <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
                       <span className="text-xs text-center">{skill.name}</span>
                     </motion.div>
                   ))}

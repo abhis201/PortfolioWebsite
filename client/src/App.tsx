@@ -7,6 +7,7 @@ import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
 import Admin from "@/pages/admin";
 import NotFound from "@/pages/not-found";
+import Certificates from '@/pages/certificates';
 import { motion, AnimatePresence } from "framer-motion";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/admin" component={Admin} />
+        <Route path="/certificates" component={Certificates} />
         <Route component={NotFound} />
       </Switch>
     </AnimatePresence>

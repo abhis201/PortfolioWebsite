@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,6 +52,11 @@ export default function Nav() {
               />
             </motion.li>
           ))}
+          <li>
+            <Link href="/certificates">
+              <a className="relative group cursor-pointer font-semibold text-primary hover:underline">Certificates</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </motion.nav>

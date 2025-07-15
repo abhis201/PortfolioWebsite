@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 export default function Hero() {
   return (
@@ -49,7 +50,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-lg text-muted-foreground mb-8 max-w-xl"
         >
-          A passionate Software Engineer with expertise in full-stack development, distributed systems, and cloud technologies. Currently pursuing MS in Computer Science at Purdue University while contributing to enterprise-scale solutions at Scope Retail.
+          Software Engineer at Scope Retail Systems Inc. MS in Computer Science, Purdue University. Experienced in building scalable APIs, modern UIs, and cloud-native solutions.
         </motion.p>
 
         <motion.div
@@ -58,14 +59,17 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex justify-center md:justify-start gap-6"
         >
-          <a href="https://linkedin.com/in/abhishek-singh-7462215a/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
-            LinkedIn
+          <a href="https://linkedin.com/in/abhishek-singh-7462215a/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-blue-700 transition-colors duration-200 flex items-center gap-2 group">
+            <FaLinkedin className="w-6 h-6 group-hover:scale-110 group-hover:text-blue-600 transition-transform duration-200" />
+            <span className="hidden md:inline">LinkedIn</span>
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
-            GitHub
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-gray-700 transition-colors duration-200 flex items-center gap-2 group">
+            <FaGithub className="w-6 h-6 group-hover:scale-110 group-hover:text-black transition-transform duration-200" />
+            <span className="hidden md:inline">GitHub</span>
           </a>
-          <a href="mailto:sing1290@purdue.edu" className="text-primary hover:text-primary/80">
-            Email
+          <a href="mailto:sing1290@purdue.edu" className="text-primary hover:text-red-600 transition-colors duration-200 flex items-center gap-2 group">
+            <FaEnvelope className="w-6 h-6 group-hover:scale-110 group-hover:text-red-500 transition-transform duration-200" />
+            <span className="hidden md:inline">Email</span>
           </a>
         </motion.div>
       </motion.div>
