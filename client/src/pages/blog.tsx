@@ -3,7 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import BlogNav from "@/components/blog-nav";
 import Cursor from "@/components/cursor";
-import ParticleBackground from "@/components/particle-background";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -44,7 +43,6 @@ export default function Blog() {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <Cursor />
-        <ParticleBackground />
         <BlogNav />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32">
           <div className="flex items-center justify-center min-h-[60vh]">
@@ -62,7 +60,6 @@ export default function Blog() {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <Cursor />
-        <ParticleBackground />
         <BlogNav />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32">
           <div className="flex items-center justify-center min-h-[60vh]">
@@ -81,18 +78,18 @@ export default function Blog() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
       className="min-h-screen bg-background text-foreground overflow-hidden"
     >
       <Cursor />
-      <ParticleBackground />
       <BlogNav />
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
         {/* Header */}
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 0.3, duration: 1.0, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
@@ -108,10 +105,14 @@ export default function Blog() {
           {blogs?.map((blog, index) => (
             <motion.div
               key={blog.id}
-              initial={{ y: 20, opacity: 0 }}
+              initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1 + index * 0.1 }}
-              whileHover={{ y: -5 }}
+              transition={{ 
+                delay: 0.5 + index * 0.15, 
+                duration: 1.2, 
+                ease: "easeOut" 
+              }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               <Card className="h-full hover:shadow-lg transition-all duration-300 cursor-pointer group">
                 {blog.featured_image && (
@@ -168,8 +169,9 @@ export default function Blog() {
 
         {blogs?.length === 0 && (
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1.0, ease: "easeOut" }}
             className="text-center py-16"
           >
             <p className="text-muted-foreground text-lg">No blog posts available yet.</p>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
+import { useTheme } from '@/lib/theme-context';
 import {
   FaJava,
   FaPython,
@@ -73,6 +74,17 @@ const skillCategories = [
 ];
 
 export default function Skills() {
+  const { theme } = useTheme();
+
+  const getIconColor = (skillName: string, defaultColor: string) => {
+    if (theme === 'dark') {
+      if (skillName === 'Next.js' || skillName === 'Express' || skillName === 'Kafka') {
+        return '#ffffff';
+      }
+    }
+    return defaultColor;
+  };
+
   return (
     <section id="skills" className="py-20">
       <motion.div
@@ -101,7 +113,10 @@ export default function Skills() {
                       whileHover={{ scale: 1.1 }}
                       className="flex flex-col items-center justify-center gap-2"
                     >
-                      <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
+                      <skill.icon 
+                        className="w-8 h-8" 
+                        style={{ color: getIconColor(skill.name, skill.color) }} 
+                      />
                       <span className="text-xs text-center">{skill.name}</span>
                     </motion.div>
                   ))}

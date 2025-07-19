@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { useTheme } from '@/lib/theme-context';
 
 export default function ParticleBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -55,9 +57,13 @@ export default function ParticleBackground() {
     }
     linesGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
 
+    // Theme-based colors
+    const particleColor = theme === 'dark' ? '#00ff88' : '#0066cc';
+    const lineColor = theme === 'dark' ? '#004422' : '#003366';
+
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.3,
-      color: '#00ff00',
+      color: particleColor,
       transparent: true,
       opacity: 0.8,
       blending: THREE.AdditiveBlending,
@@ -65,7 +71,7 @@ export default function ParticleBackground() {
     });
 
     const linesMaterial = new THREE.LineBasicMaterial({
-      color: '#003300',
+      color: lineColor,
       transparent: true,
       opacity: 0.4,
       blending: THREE.AdditiveBlending
@@ -134,13 +140,17 @@ export default function ParticleBackground() {
       window.removeEventListener('mousemove', handleMouseMove);
       containerRef.current?.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div 
       ref={containerRef}
       className="fixed top-0 left-0 w-full h-full -z-50 opacity-90 pointer-events-none"
-      style={{ background: 'linear-gradient(to bottom, #000000, #1a1a1a)' }}
+      style={{ 
+        background: theme === 'dark' 
+          ? 'linear-gradient(to bottom, #0a0a0a, #1a1a1a)' 
+          : 'linear-gradient(to bottom, #ffffff, #f8fafc)'
+      }}
     />
   );
 }

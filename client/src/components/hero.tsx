@@ -3,14 +3,14 @@ import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-between relative px-4 md:px-8">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-between relative px-4 md:px-8 pt-24 md:pt-0">
       <motion.div 
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         className="w-full md:w-1/2 flex items-center justify-center md:justify-start"
       >
-        <div className="relative w-64 h-64 md:w-96 md:h-[600px] overflow-hidden rounded-2xl">
+        <div className="relative w-64 h-64 md:w-96 md:h-[600px] overflow-hidden rounded-2xl mt-4 md:mt-0">
           <img
             src="./assets/A5DD8012-E34B-47A3-AB35-138FB6143AA8.jpeg"
             alt="Abhishek Singh"
@@ -24,7 +24,7 @@ export default function Hero() {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-1/2 text-center md:text-left md:pl-12 mt-8 md:mt-0 z-10"
+        className="w-full md:w-1/2 text-center md:text-left md:pl-12 mt-4 md:mt-0 z-10"
       >
         <motion.h1
           initial={{ y: 50, opacity: 0 }}
@@ -63,12 +63,12 @@ export default function Hero() {
             <FaLinkedin className="w-6 h-6 group-hover:scale-110 group-hover:text-blue-600 transition-transform duration-200" />
             <span className="hidden md:inline">LinkedIn</span>
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-gray-700 transition-colors duration-200 flex items-center gap-2 group">
-            <FaGithub className="w-6 h-6 group-hover:scale-110 group-hover:text-black transition-transform duration-200" />
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-orange-600 transition-colors duration-200 flex items-center gap-2 group">
+            <FaGithub className="w-6 h-6 group-hover:scale-110 group-hover:text-orange-500 transition-transform duration-200" />
             <span className="hidden md:inline">GitHub</span>
           </a>
-          <a href="mailto:sing1290@purdue.edu" className="text-primary hover:text-red-600 transition-colors duration-200 flex items-center gap-2 group">
-            <FaEnvelope className="w-6 h-6 group-hover:scale-110 group-hover:text-red-500 transition-transform duration-200" />
+          <a href="mailto:sing1290@purdue.edu" className="text-primary hover:text-green-600 transition-colors duration-200 flex items-center gap-2 group">
+            <FaEnvelope className="w-6 h-6 group-hover:scale-110 group-hover:text-green-500 transition-transform duration-200" />
             <span className="hidden md:inline">Email</span>
           </a>
         </motion.div>
@@ -78,7 +78,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 right-4 md:left-1/2 md:-translate-x-1/2 md:right-auto"
       >
         <div className="w-6 h-10 border-2 border-primary rounded-full p-1">
           <motion.div

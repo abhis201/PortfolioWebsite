@@ -26,17 +26,17 @@ export default function About() {
               className="w-full h-full object-cover rounded-lg"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-              <Card className="bg-white/60 backdrop-blur-md p-12 max-w-4xl w-full mx-auto shadow-lg">
-                <p className="text-lg mb-4 text-black">
+              <Card className="bg-white/10 backdrop-blur-md p-6 md:p-12 max-w-4xl w-[95vw] md:w-full mx-auto shadow-lg overflow-y-auto max-h-[80vh] md:max-h-none">
+                <p className="text-lg mb-4 text-white">
                   Software Engineer at Scope Retail Systems Inc. (Bentonville, Arkansas). Graduated with an MS in Computer Science from Purdue University.
                 </p>
-                <p className="text-lg mb-4 text-black">
+                <p className="text-lg mb-4 text-white">
                   <strong>Full-time (Jun 2025 - Present):</strong> Design, develop, and maintain RESTful APIs and microservices using Spring Boot (Java). Build interactive, responsive user interfaces with React and TypeScript. Collaborate with cross-functional teams, facilitate sprint planning, write clean and testable code, mentor junior engineers, debug production issues, and maintain CI/CD pipelines.
                 </p>
-                <p className="text-lg mb-4 text-black">
+                <p className="text-lg mb-4 text-white">
                   <strong>Internship (Aug 2024 - Jun 2025):</strong> Integrated systems for U.S. retailers and implemented Enterprise Integration Patterns using Apache Camel, Freemarker, Google Cloud Storage, Pub/Sub, and Spanner. Improved system monitoring with OpenTelemetry, Loki, Tempo, and Grafana. Developed product documentation and demos using Markdoc, Next.js, and TailwindUI.
                 </p>
-                <p className="text-lg text-black">
+                <p className="text-lg text-white">
                   I am passionate about building scalable solutions, leveraging modern technologies, and continuously improving code quality and team productivity.
                 </p>
               </Card>

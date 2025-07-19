@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
+import { useTheme } from '@/lib/theme-context';
 import {
   FaJava,
   FaPython,
@@ -94,6 +95,17 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const { theme } = useTheme();
+
+  const getIconColor = (skillName: string, defaultColor: string) => {
+    if (theme === 'dark') {
+      if (skillName === 'Next.js' || skillName === 'Express' || skillName === 'Kafka') {
+        return '#ffffff';
+      }
+    }
+    return defaultColor;
+  };
+
   return (
     <section id="experience" className="py-20">
       <motion.div
@@ -102,7 +114,7 @@ export default function Experience() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-3xl font-bold text-center mb-12">Experience</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Experience</h2>
 
         <div className="space-y-8">
           {experiences.map((exp, index) => (
@@ -113,10 +125,10 @@ export default function Experience() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <Card className="p-8 h-full shadow-xl border-2 border-primary/30 bg-white/90 backdrop-blur-md rounded-2xl flex flex-col justify-between">
+              <Card className="p-8 h-full shadow-xl border-2 border-primary/30 bg-card/90 backdrop-blur-md rounded-2xl flex flex-col justify-between">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold">{exp.title}</h3>
+                    <h3 className="text-xl font-semibold text-foreground">{exp.title}</h3>
                     <p className="text-primary">{exp.company}</p>
                   </div>
                   <div className="text-right">
@@ -132,7 +144,15 @@ export default function Experience() {
                     const iconData = skillIconMap[skill] || {};
                     const Icon = iconData.icon;
                     return Icon ? (
-                      <Icon key={skill} className="w-5 h-5" style={{ color: iconData.color, opacity: 0.85 }} title={skill} />
+                      <Icon 
+                        key={skill} 
+                        className="w-5 h-5" 
+                        style={{ 
+                          color: getIconColor(skill, iconData.color), 
+                          opacity: 0.85 
+                        }} 
+                        title={skill} 
+                      />
                     ) : null;
                   })}
                 </div>
