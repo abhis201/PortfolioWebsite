@@ -30,17 +30,12 @@ export default function About() {
             />
             <div className={`absolute inset-0 flex items-center justify-center`}>
               <Card className={`bg-black/50 backdrop-blur-md w-full h-full box-border p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 mx-auto shadow-lg overflow-y-auto`}> 
-                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
-                  Software Engineer at Scope Retail Systems Inc. (Bentonville, Arkansas). Graduated with an MS in Computer Science from Purdue University.
-                </p>
-                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
-                  <strong>Full-time (Jun 2025 - Present):</strong> Design, develop, and maintain RESTful APIs and microservices using Spring Boot (Java). Build interactive, responsive user interfaces with React and TypeScript. Collaborate with cross-functional teams, facilitate sprint planning, write clean and testable code, mentor junior engineers, debug production issues, and maintain CI/CD pipelines.
-                </p>
-                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
-                  <strong>Internship (Aug 2024 - Jun 2025):</strong> Integrated systems for U.S. retailers and implemented Enterprise Integration Patterns using Apache Camel, Freemarker, Google Cloud Storage, Pub/Sub, and Spanner. Improved system monitoring with OpenTelemetry, Loki, Tempo, and Grafana. Developed product documentation and demos using Markdoc, Next.js, and TailwindUI.
-                </p>
-                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
-                  I am passionate about building scalable solutions, leveraging modern technologies, and continuously improving code quality and team productivity.
+                <p className="text-xs sm:text-sm md:text-sm lg:text-base 2xl:text-xl text-white leading-relaxed py-2 md:py-3 whitespace-pre-line">
+                  Full-Stack Software Engineer with an MS in Computer Science from Purdue University (where I learned that debugging is just being a detective in a crime movie you committed yourself), currently architecting scalable RESTful APIs and microservices with Spring Boot and Java while crafting responsive React and TypeScript interfaces that actually work on the first try (okay, maybe the second… or third) at Scope Retail Systems Inc. in beautiful Bentonville, Arkansas.
+                  {"\n\n"}
+                  I’ve evolved from integrating enterprise systems using Apache Camel, Kafka, Freemarker, Google Cloud Storage, Pub/Sub, Spanner, and a concerning amount of coffee during my internship, to now collaborating with cross-functional teams who somehow still trust my technical decisions, mentoring junior engineers (teaching them that “it works on my machine” is not a valid deployment strategy).
+                  {"\n\n"}
+                  Currently maintaining production CI/CD pipelines and orchestrating complex deployments with OpenTelemetry, Loki, Tempo, and Grafana that don’t break at 3 AM (most of the time) with the finesse of a symphony conductor who occasionally drops the baton—all while driving continuous improvements in code quality, system scalability, team productivity, and the office’s caffeine consumption rates across the complete software development lifecycle, because apparently building software that handles real money and doesn’t fall over when more than three people use it simultaneously is considered “a skill.”
                 </p>
               </Card>
             </div>
