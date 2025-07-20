@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaAws, FaPython, FaJava, FaDatabase, FaCloud, FaDocker, FaGlobe, FaCode } from 'react-icons/fa';
@@ -17,7 +16,7 @@ const projects = [
   },
   {
     name: 'E-Commerce Platform',
-    description: 'A scalable e-commerce platform with microservices architecture, built using Node.js, Express, MongoDB, React, and Docker. Implements JWT auth, payment integration, and CI/CD.',
+    description: `A scalable e-commerce platform with microservices architecture, built using Node.js, Express, MongoDB, React, and Docker. Implements JWT auth, payment integration, and CI/CD.\n\nThis project features a robust admin dashboard, real-time order tracking, product recommendations, and a fully responsive UI. It also includes automated testing, containerized deployment, and advanced analytics for sales and user engagement.\n\nThe platform is designed for high availability and scalability, supporting thousands of concurrent users and seamless integration with third-party services.`,
     skills: [FaNodeJs, SiExpress, SiMongodb, FaReact, FaDocker, FaGithub],
     github: 'https://github.com/abhishek-singh-7462215a/ecommerce-platform',
     live: 'https://ecommerce.abhisheksingh.dev',
@@ -58,9 +57,10 @@ const projects = [
 ];
 
 export default function Projects() {
-  useEffect(() => {
+  // Scroll to top on mount (optional, can be removed if not needed)
+  if (typeof window !== 'undefined') {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, []);
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
@@ -82,54 +82,52 @@ export default function Projects() {
             Explore a selection of my most impactful projects, each crafted with modern technologies and a focus on clean code, scalability, and outstanding user experience. Click any project to view the code or live demo!
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-            {projects.map((project, idx) => (
-              <motion.div
-                key={project.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <Card
-                  className="p-6 h-full shadow-lg border-2 border-primary/20 bg-card/90 backdrop-blur-md rounded-xl flex flex-col justify-between group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:border-primary/40"
-                  onClick={() => window.open(project.live || project.github, '_blank')}
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <h3 className="text-lg font-semibold leading-tight flex-1 text-foreground">{project.name}</h3>
-                    {project.live && <FaExternalLinkAlt className="w-5 h-5 text-primary" title="Live Demo" />}
-                    <FaGithub className="w-5 h-5 text-muted-foreground" title="GitHub Repo" />
-                  </div>
-                  <div className="mb-4 text-sm text-muted-foreground min-h-[60px]">{project.description}</div>
-                  <div className="flex flex-wrap gap-2 mt-2 mb-2">
-                    {project.skills.map((Icon, i) => (
-                      <Icon key={i} className="w-6 h-6 text-primary/80 bg-primary/10 rounded p-1" />
-                    ))}
-                  </div>
-                  <div className="flex gap-2 mt-auto">
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-3 py-1 rounded bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition"
-                        onClick={e => e.stopPropagation()}
-                      >
-                        <FaExternalLinkAlt className="w-4 h-4" /> Live Demo
-                      </a>
-                    )}
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded bg-secondary text-secondary-foreground text-xs font-semibold hover:bg-secondary/80 transition"
-                      onClick={e => e.stopPropagation()}
+            {projects.map((project, idx) => {
+              return (
+                <div key={project.name} className="relative overflow-visible">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  >
+                    <Card
+                      className="p-6 h-full shadow-lg border-2 border-primary/20 bg-card/90 backdrop-blur-md rounded-xl flex flex-col justify-between group transition-all duration-300 hover:shadow-2xl hover:border-primary/40 overflow-visible"
                     >
-                      <FaGithub className="w-4 h-4" /> GitHub
-                    </a>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+                    <div className="flex items-center gap-4 mb-4">
+                      <h3 className="text-lg font-semibold leading-tight flex-1 text-foreground">{project.name}</h3>
+                      {project.live && <FaExternalLinkAlt className="w-5 h-5 text-primary" title="Live Demo" />}
+                      <FaGithub className="w-5 h-5 text-muted-foreground" title="GitHub Repo" />
+                    </div>
+                    <div className="mb-4 text-sm text-muted-foreground h-[6.35rem] overflow-y-auto pr-1 leading-tight">
+                      {project.description}
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-2 mb-2">
+                      {project.skills.map((Icon, i) => (
+                        <Icon key={i} className="w-6 h-6 text-primary/80 bg-primary/10 rounded p-1" />
+                      ))}
+                    </div>
+                    <div className="flex gap-2 mt-auto relative">
+                      {project.live && (
+                        <button
+                          type="button"
+                          className="inline-flex items-center gap-1 px-3 py-1 rounded bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition relative"
+                        >
+                          <FaExternalLinkAlt className="w-4 h-4" /> Live Demo
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-1 px-3 py-1 rounded bg-secondary text-secondary-foreground text-xs font-semibold hover:bg-secondary/80 transition relative"
+                      >
+                        <FaGithub className="w-4 h-4" /> GitHub
+                      </button>
+                    </div>
+                  </Card>
+                  </motion.div>
+                </div>
+              );
+            })}
           </div>
         </motion.div>
       </section>

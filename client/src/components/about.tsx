@@ -1,10 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { useTheme } from '@/lib/theme-context';
 
 export default function About() {
-  const { theme } = useTheme();
-  
   return (
     <section id="about" className="py-20">
       <motion.div
@@ -24,7 +21,7 @@ export default function About() {
             className="relative w-full md:w-3/4 h-[600px] overflow-hidden rounded-lg bg-black/5 flex items-center justify-center"
           >
             <img
-              src={theme === 'dark' ? "./assets/about_dark.jpg" : "./assets/about_light.jpg"}
+              src={"./assets/about_light.jpg"}
               alt="Professional photo"
               className="w-full h-full object-cover rounded-lg"
             />
