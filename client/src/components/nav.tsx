@@ -30,6 +30,7 @@ export default function Nav() {
     { label: 'Skills', action: () => scrollToSection('skills') },
     { label: 'Experience', action: () => scrollToSection('experience') },
     { label: 'Projects', action: () => scrollToSection('projects') },
+    { label: 'Blog', action: () => scrollToSection('blog') },
     { label: 'Contact', action: () => scrollToSection('contact') },
     { label: 'Certificates', action: null, href: '/certificates' },
   ];
