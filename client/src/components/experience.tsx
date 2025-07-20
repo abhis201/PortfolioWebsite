@@ -65,7 +65,14 @@ const experiences = [
     company: "Scope Retail Systems Inc.",
     period: "06/2025 - Present",
     location: "Bentonville, AR, USA (On-site)",
-    description: `Lead the design, development, and maintenance of RESTful APIs and microservices using Spring Boot (Java), ensuring scalable and fault-tolerant architectures for high-traffic retail environments. Architected and implemented interactive, responsive UIs with React.js and TypeScript, focusing on reusable components and robust state management. Collaborated with cross-functional teams (product, QA, DevOps) to deliver features, facilitate agile ceremonies, and accelerate time-to-market. Championed code quality through rigorous code reviews, mentoring, and adherence to best practices (unit/integration testing with JUnit, Jest). Automated CI/CD pipelines using Jenkins and GitHub Actions, reducing deployment times and minimizing downtime. Proactively resolved production issues, optimized performance, and drove innovation by evaluating emerging technologies and proposing PoCs.`,
+    description: [
+      "Led the design and development of scalable RESTful APIs and microservices with Spring Boot (Java), powering high-traffic retail systems.",
+      "Architected and implemented responsive, reusable React + TypeScript UIs, improving user experience and maintainability.",
+      "Collaborated cross-functionally with Product, QA, and DevOps to deliver features on time and drive agile best practices.",
+      "Championed code quality through code reviews, mentoring, and rigorous unit/integration testing (JUnit, Jest).",
+      "Automated CI/CD pipelines (Jenkins, GitHub Actions), reducing deployment times and minimizing downtime.",
+      "Proactively resolved production issues, optimized performance, and drove innovation through PoCs and technology evaluations."
+    ],
     skills: ["Java", "Spring", "React", "TypeScript", "CI/CD", "Jenkins", "GitHub", "REST APIs", "Microservices", "Agile", "JUnit", "Jest", "Docker", "Kubernetes", "AWS", "Google Cloud", "Kafka", "Camel", "Freemarker"] as (keyof typeof skillIconMap)[]
   },
   {
@@ -73,7 +80,12 @@ const experiences = [
     company: "Scope Retail Systems Inc.",
     period: "08/2024 - 06/2025",
     location: "Bentonville, AR, USA (On-site)",
-    description: `Integrated enterprise systems for U.S. retailers, implementing Enterprise Integration Patterns with Apache Camel, Freemarker, Google Cloud Storage, Pub/Sub, and Spanner. Instrumented Dockerized microservices with OpenTelemetry, integrating Loki, Tempo, and Grafana for comprehensive log and trace analysis. Developed product documentation and interactive demos using Markdoc, Next.js, and TailwindUI. Collaborated with engineering teams to enhance system interoperability, monitoring, and user engagement.`,
+    description: [
+      "Integrated enterprise systems for U.S. retailers using Apache Camel, Freemarker, Google Cloud Storage, Pub/Sub, and Spanner.",
+      "Instrumented Dockerized microservices with OpenTelemetry, enabling advanced log and trace analysis via Loki, Tempo, and Grafana.",
+      "Developed product documentation and interactive demos with Markdoc, Next.js, and TailwindUI, enhancing user engagement.",
+      "Collaborated with engineering teams to improve system interoperability, monitoring, and reliability."
+    ],
     skills: ["Apache Camel", "Google Cloud", "Docker", "OpenTelemetry", "Loki", "Tempo", "Grafana", "Markdoc", "Next.js", "TailwindCSS", "System Integration", "Microservices", "Kafka", "Camel", "Freemarker"] as (keyof typeof skillIconMap)[]
   },
   {
@@ -81,7 +93,12 @@ const experiences = [
     company: "Purdue University",
     period: "01/2024 - 05/2024",
     location: "Hammond, IN, USA",
-    description: `Developed and deployed a Gunshot Detection System for campus safety, leveraging machine learning and real-time data processing across 150+ buildings. Enhanced risk analysis and predictive maintenance using advanced ML models. Built and trained a YOLOv8-based computer vision model for rail defect classification, improving detection accuracy and operational safety. Collaborated with research teams to publish findings and present at industry conferences.`,
+    description: [
+      "Developed and deployed a Gunshot Detection System for campus safety, leveraging ML and real-time data processing across 150+ buildings.",
+      "Enhanced risk analysis and predictive maintenance using advanced ML models and data science techniques.",
+      "Built and trained a YOLOv8-based computer vision model for rail defect classification, improving detection accuracy and safety.",
+      "Collaborated with research teams to publish findings and present at industry conferences."
+    ],
     skills: ["Python", "Machine Learning", "YOLOv8", "Computer Vision", "Data Science", "PostgreSQL", "React", "Docker"] as (keyof typeof skillIconMap)[]
   },
   {
@@ -89,7 +106,12 @@ const experiences = [
     company: "Scopesys Innovation",
     period: "11/2022 - 08/2023",
     location: "Pune, MH, India",
-    description: `Engineered and maintained the COSMOS transaction platform, processing $10M+ monthly transactions for retail clients. Enhanced warehouse management efficiency by 40% through the UNITI system, leveraging Node.js, React, and MongoDB. Reduced system downtimes by 30% via codebase refactoring, improved monitoring, and automated deployment pipelines. Collaborated with global teams to deliver scalable, secure, and high-performance solutions.`,
+    description: [
+      "Engineered and maintained the COSMOS transaction platform, processing $10M+ monthly transactions for retail clients.",
+      "Enhanced warehouse management efficiency by 40% through the UNITI system using Node.js, React, and MongoDB.",
+      "Reduced system downtimes by 30% via codebase refactoring, improved monitoring, and automated deployment pipelines.",
+      "Collaborated with global teams to deliver scalable, secure, and high-performance solutions."
+    ],
     skills: ["Node.js", "React", "MongoDB", "PostgreSQL", "Docker", "CI/CD", "Agile", "Microservices"] as (keyof typeof skillIconMap)[]
   }
 ];
@@ -125,7 +147,7 @@ export default function Experience() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <Card className="p-8 h-full shadow-xl border-2 border-primary/30 bg-card/90 backdrop-blur-md rounded-2xl flex flex-col justify-between">
+              <Card className={`p-8 h-full rounded-2xl flex flex-col justify-between backdrop-blur-md ${theme === 'dark' ? 'bg-white/20 shadow-2xl' : 'bg-black/20 shadow-lg'}`}>
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-xl font-semibold text-foreground">{exp.title}</h3>
@@ -136,9 +158,11 @@ export default function Experience() {
                     <p className="text-sm text-muted-foreground">{exp.location}</p>
                   </div>
                 </div>
-                <div className="mb-6 text-base text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {exp.description}
-                </div>
+                <ul className={`mb-6 text-base leading-relaxed list-disc pl-6 ${theme === 'dark' ? 'text-muted-foreground' : 'text-gray-600'}`}>
+                  {exp.description.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {exp.skills && exp.skills.map((skill: keyof typeof skillIconMap) => {
                     const iconData = skillIconMap[skill] || {};
