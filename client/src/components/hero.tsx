@@ -12,11 +12,10 @@ export default function Hero() {
       >
         <div className="relative w-64 h-64 md:w-96 md:h-[600px] overflow-hidden rounded-2xl mt-4 md:mt-0">
           <img
-            src="./assets/A5DD8012-E34B-47A3-AB35-138FB6143AA8.jpeg"
+            src="./assets/hero_img.jpeg"
             alt="Abhishek Singh"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
         </div>
       </motion.div>
 

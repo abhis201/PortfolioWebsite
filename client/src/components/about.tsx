@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
+import { useTheme } from '@/lib/theme-context';
 
 export default function About() {
+  const { theme } = useTheme();
+  
   return (
     <section id="about" className="py-20">
       <motion.div
@@ -21,12 +24,12 @@ export default function About() {
             className="relative w-full md:w-3/4 h-[600px] overflow-hidden rounded-lg bg-black/5 flex items-center justify-center"
           >
             <img
-              src="./assets/IMG_4977 Copy.jpeg"
+              src={theme === 'dark' ? "./assets/about_dark.jpg" : "./assets/about_light.jpg"}
               alt="Professional photo"
               className="w-full h-full object-cover rounded-lg"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-              <Card className="bg-white/10 backdrop-blur-md p-6 md:p-12 max-w-4xl w-[95vw] md:w-full mx-auto shadow-lg overflow-y-auto max-h-[80vh] md:max-h-none">
+            <div className={`absolute inset-0 flex items-center justify-center ${theme === 'dark' ? 'bg-black/70' : 'bg-white/20'}`}>
+              <Card className={`${theme === 'dark' ? 'bg-white/10' : 'bg-black/50'} backdrop-blur-md p-6 md:p-12 max-w-4xl w-[95vw] md:w-full mx-auto shadow-lg overflow-y-auto max-h-[80vh] md:max-h-none`}>
                 <p className="text-lg mb-4 text-white">
                   Software Engineer at Scope Retail Systems Inc. (Bentonville, Arkansas). Graduated with an MS in Computer Science from Purdue University.
                 </p>
