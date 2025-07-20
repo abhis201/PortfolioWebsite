@@ -78,10 +78,10 @@ export default function Projects() {
             </Link>
           </div>
           <h2 className="text-3xl font-bold text-center mb-6 text-foreground">Projects</h2>
-          <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto px-4 sm:px-6">
             Explore a selection of my most impactful projects, each crafted with modern technologies and a focus on clean code, scalability, and outstanding user experience. Click any project to view the code or live demo!
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
             {projects.map((project, idx) => (
               <motion.div
                 key={project.name}

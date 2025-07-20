@@ -125,10 +125,10 @@ export default function Certificates() {
             </Link>
           </div>
           <h2 className="text-3xl font-bold text-center mb-6 text-foreground">Certifications & Achievements</h2>
-          <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto px-4 sm:px-6">
             A showcase of my commitment to continuous learning and technical excellence. Each certificate represents a milestone in mastering new technologies, frameworks, and industry best practices. Explore the credentials that power my expertise!
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
             {certificates.map((cert, idx) => (
               <motion.div
                 key={cert.title + cert.issuer}
