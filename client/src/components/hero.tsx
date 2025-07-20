@@ -47,9 +47,13 @@ export default function Hero() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-lg text-muted-foreground mb-8 max-w-xl"
+          className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 max-w-xl whitespace-pre-line"
         >
-          Software Engineer at Scope Retail Systems Inc. MS in Computer Science, Purdue University. Experienced in building scalable APIs, modern UIs, and cloud-native solutions.
+          Software Engineer @ Scope Retail Systems
+          {"\n"}From APIs to interfaces, crafting complete solutions
+          {"\n"}🎓 MS Computer Science - Purdue University
+          {"\n"}⚡ Expertise: Scalable APIs - Modern UI/UX - Cloud-Native Architecture
+          {"\n"}Transforming ideas into robust, scalable, production-ready applications
         </motion.p>
 
         <motion.div

@@ -28,18 +28,18 @@ export default function About() {
               alt="Professional photo"
               className="w-full h-full object-cover rounded-lg"
             />
-            <div className={`absolute inset-0 flex items-center justify-center ${theme === 'dark' ? 'bg-black/70' : 'bg-white/20'}`}>
-              <Card className={`${theme === 'dark' ? 'bg-white/10' : 'bg-black/50'} backdrop-blur-md p-6 md:p-12 max-w-4xl w-[95vw] md:w-full mx-auto shadow-lg overflow-y-auto max-h-[80vh] md:max-h-none`}>
-                <p className="text-lg mb-4 text-white">
+            <div className={`absolute inset-0 flex items-center justify-center`}>
+              <Card className={`bg-black/50 backdrop-blur-md w-full h-full box-border p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 mx-auto shadow-lg overflow-y-auto`}> 
+                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
                   Software Engineer at Scope Retail Systems Inc. (Bentonville, Arkansas). Graduated with an MS in Computer Science from Purdue University.
                 </p>
-                <p className="text-lg mb-4 text-white">
+                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
                   <strong>Full-time (Jun 2025 - Present):</strong> Design, develop, and maintain RESTful APIs and microservices using Spring Boot (Java). Build interactive, responsive user interfaces with React and TypeScript. Collaborate with cross-functional teams, facilitate sprint planning, write clean and testable code, mentor junior engineers, debug production issues, and maintain CI/CD pipelines.
                 </p>
-                <p className="text-lg mb-4 text-white">
+                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
                   <strong>Internship (Aug 2024 - Jun 2025):</strong> Integrated systems for U.S. retailers and implemented Enterprise Integration Patterns using Apache Camel, Freemarker, Google Cloud Storage, Pub/Sub, and Spanner. Improved system monitoring with OpenTelemetry, Loki, Tempo, and Grafana. Developed product documentation and demos using Markdoc, Next.js, and TailwindUI.
                 </p>
-                <p className="text-lg text-white">
+                <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white leading-relaxed py-2 md:py-3">
                   I am passionate about building scalable solutions, leveraging modern technologies, and continuously improving code quality and team productivity.
                 </p>
               </Card>
