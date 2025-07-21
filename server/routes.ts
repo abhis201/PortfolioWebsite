@@ -9,10 +9,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/contact", async (req, res) => {
     try {
       const data = insertMessageSchema.parse(req.body);
-      
+
       // Store message in database
       const message = await storage.createMessage(data);
-      
+
       // Send email notification
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -26,13 +26,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       await transporter.sendMail({
         from: process.env.SMTP_FROM,
-        to: "sing1290@purdue.edu",
-        subject: `New Contact Form Message from ${data.name}`,
-        text: `
-          Name: ${data.name}
-          Email: ${data.email}
-          Message: ${data.message}
-        `,
+        to: "sing1290@pnw.edu",
+        subject: "Portfolio Contact",
+        text: data.message,
+        replyTo: data.email,
       });
 
       res.json(message);
@@ -40,7 +37,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof ZodError) {
         res.status(400).json({ message: "Invalid input data" });
       } else {
-        console.error(error);
+        console.error('Contact form error:', error);
+        if (error instanceof Error && error.stack) {
+          console.error('Stack trace:', error.stack);
+        }
         res.status(500).json({ message: "Failed to send message" });
       }
     }
