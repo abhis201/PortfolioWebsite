@@ -66,11 +66,11 @@ export default function Hero() {
             <FaLinkedin className="w-6 h-6 group-hover:scale-110 group-hover:text-blue-600 transition-transform duration-200" />
             <span className="hidden md:inline">LinkedIn</span>
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-orange-600 transition-colors duration-200 flex items-center gap-2 group">
+          <a href="https://github.com/abhis201" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-orange-600 transition-colors duration-200 flex items-center gap-2 group">
             <FaGithub className="w-6 h-6 group-hover:scale-110 group-hover:text-orange-500 transition-transform duration-200" />
             <span className="hidden md:inline">GitHub</span>
           </a>
-          <a href="mailto:sing1290@purdue.edu" className="text-primary hover:text-green-600 transition-colors duration-200 flex items-center gap-2 group">
+          <a href="mailto:abhishek.singh201@yahoo.com" className="text-primary hover:text-green-600 transition-colors duration-200 flex items-center gap-2 group">
             <FaEnvelope className="w-6 h-6 group-hover:scale-110 group-hover:text-green-500 transition-transform duration-200" />
             <span className="hidden md:inline">Email</span>
           </a>
