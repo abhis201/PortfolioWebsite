@@ -32,7 +32,7 @@ export default function Projects() {
           <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto px-4 sm:px-6">
             Explore a selection of my most impactful projects, each crafted with modern technologies and a focus on clean code, scalability, and outstanding user experience. Click any project to view the code or live demo!
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4 sm:px-6">
             {projects.map((project, idx) => (
               <ProjectCard key={project.name} project={project} index={idx} />
             ))}

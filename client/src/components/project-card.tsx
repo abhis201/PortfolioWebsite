@@ -24,10 +24,10 @@ const ProjectCard = React.memo(function ProjectCard({ project, index = 0, enhanc
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
         <Card
-          className={`p-6 h-full shadow-xl border-2 border-primary/20 bg-card/95 backdrop-blur-md rounded-xl flex flex-col justify-between group transition-all duration-150 will-change-transform will-change-shadow overflow-visible ${hoverClasses}`}
+          className={`p-6 h-full shadow-xl border-2 border-primary/20 bg-card/95 backdrop-blur-md rounded-xl flex flex-col justify-between group transition-all duration-150 will-change-transform will-change-shadow overflow-visible w-full max-w-full ${hoverClasses}`}
         >
-          <div className="flex items-center gap-4 mb-4">
-            <h3 className="text-lg font-semibold leading-tight flex-1 text-foreground overflow-x-auto scrollbar-hide whitespace-nowrap pr-2">
+          <div className="flex items-center gap-4 mb-4 min-w-0">
+            <h3 className="text-lg font-semibold leading-tight flex-1 text-foreground overflow-x-auto scrollbar-hide whitespace-nowrap pr-2 min-w-0">
               {project.name}
             </h3>
             <div className="flex gap-2 flex-shrink-0">
