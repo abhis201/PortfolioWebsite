@@ -1,5 +1,5 @@
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaJava, FaGlobe, FaCode, FaChartBar } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaJava, FaGlobe, FaCode, FaChartBar, FaHtml5, FaCss3Alt, FaJs, FaMap, FaCube } from 'react-icons/fa';
+import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs, SiBootstrap, SiJquery, SiMui, SiThreedotjs, SiVite } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
 export interface Project {
@@ -66,6 +66,22 @@ export const projects: Project[] = [
     skills: [FaPython, FaJava, FaCode],
     github: 'https://github.com/abhis201/programming-languages-compilers',
     live: '',
+    featured: false,
+  },
+  {
+    name: 'Simple Todo App',
+    description: 'A complete full-stack todo application with CRUD functionality, featuring a RESTful API backend and responsive frontend interface. The app allows users to create, read, update, and delete todos with persistent JSON file storage. Built with Node.js/Express backend and vanilla JavaScript frontend with Bootstrap styling.',
+    skills: [FaNodeJs, SiExpress, FaJs, FaHtml5, FaCss3Alt, SiBootstrap],
+    github: 'https://github.com/abhis201/todo-app',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Interactive Campus Map - Purdue University Northwest',
+    description: 'Comprehensive, responsive web application for Purdue University Northwest providing real-time campus navigation, building information, and interactive services. Features GPS-powered directions, 3D campus visualization, live parking capacity data, emergency services locator, and personal class scheduling integration. Implements progressive web design principles with mobile-first responsive layouts and optimized performance.',
+    skills: [FaReact, SiMui, SiJavascript, SiThreedotjs, SiRecoil, FaMap, FaNodeJs, SiMongodb],
+    github: 'https://github.com/abhis201/CampusMap',
+    live: 'https://campus-map.vercel.app/',
     featured: false,
   },
 ];
