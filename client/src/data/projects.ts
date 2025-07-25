@@ -1,5 +1,5 @@
 import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaJava, FaGlobe, FaCode, FaChartBar, FaHtml5, FaCss3Alt, FaJs, FaMap, FaCube } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs, SiBootstrap, SiJquery, SiMui, SiThreedotjs, SiVite } from 'react-icons/si';
+import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs, SiBootstrap, SiJquery, SiMui, SiThreedotjs, SiVite, SiApache, SiGit, SiGithub } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
 export interface Project {
@@ -82,6 +82,30 @@ export const projects: Project[] = [
     skills: [FaReact, SiMui, SiJavascript, SiThreedotjs, SiRecoil, FaMap, FaNodeJs, SiMongodb],
     github: 'https://github.com/abhis201/CampusMap',
     live: 'https://campus-map.vercel.app/',
+    featured: false,
+  },
+  {
+    name: 'Java Data Structures & Algorithms Practice Workspace',
+    description: 'Comprehensive Java programming workspace featuring data structure implementations, algorithm solutions, and educational exercises. Organized into modular sections covering core Java fundamentals, object-oriented programming concepts, advanced Java features, and hands-on problem-solving practice. Includes implementations of LinkedList, Binary Trees, Graphs, Hash Tables, sorting algorithms, graph traversal, and string manipulation with modern Java features like Generics, Stream API, and Lambda Expressions.',
+    skills: [FaJava, SiApache, FaCode, FaChartBar, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/Java-DSA-Algorithms-Practice',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Competitive Programming Solutions Repository',
+    description: 'Comprehensive collection of 34+ competitive programming solutions in Java and Python, systematically categorized by data structures and algorithms. Features solutions for Arrays, Sorting, Hash Maps/Sets, Math/Number Theory, and Greedy algorithms. Demonstrates algorithm optimization, time/space complexity analysis, and systematic problem-solving approaches for competitive programming challenges.',
+    skills: [FaJava, FaPython, FaCode, FaChartBar, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/Competitive_Programming',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Advanced Data Structures Library',
+    description: 'Comprehensive Java library implementing advanced data structures including Trie, Segment Tree, AVL Tree, Red-Black Tree, B-Tree, B+ Tree, Fenwick Tree, Hash Tables, and Priority Queues. Features detailed documentation, complexity analysis, and practical examples designed for learning, research, and interview preparation. Demonstrates mastery of object-oriented programming, generics, and performance optimization techniques.',
+    skills: [FaJava, FaCode, FaChartBar, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/advanced-data-structures',
+    live: '',
     featured: false,
   },
 ];
