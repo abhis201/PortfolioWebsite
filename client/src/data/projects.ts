@@ -1,5 +1,5 @@
 import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaJava, FaGlobe, FaCode, FaChartBar, FaHtml5, FaCss3Alt, FaJs, FaMap, FaCube } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs, SiBootstrap, SiJquery, SiMui, SiThreedotjs, SiVite, SiApache, SiGit, SiGithub } from 'react-icons/si';
+import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs, SiBootstrap, SiJquery, SiMui, SiThreedotjs, SiVite, SiApache, SiGit, SiGithub, SiJupyter, SiUbuntu, SiLangchain, SiStreamlit, SiOracle } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
 export interface Project {
@@ -137,6 +137,14 @@ export const projects: Project[] = [
     description: 'Comprehensive Java OOP coursework featuring design patterns, SOLID principles, and practical implementations. Includes Minesweeper game, Factory pattern projects, and extensive study materials covering 10 chapters of design patterns.',
     skills: [FaJava, FaCode, SiGit, SiGithub],
     github: 'https://github.com/abhis201/object-oriented-design-java',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'OCI Project',
+    description: 'Comprehensive setup for working with Oracle Cloud Infrastructure (OCI) and related tools. Includes scripts, configurations, and notebooks for building and deploying a chatbot using Generative AI, Chroma, and Streamlit.',
+    skills: [FaPython, SiGit, SiJupyter, SiUbuntu, SiLangchain, SiStreamlit, SiOracle],
+    github: 'https://github.com/abhis201/oci-project',
     live: '',
     featured: false,
   },
