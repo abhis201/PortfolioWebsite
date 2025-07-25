@@ -108,6 +108,38 @@ export const projects: Project[] = [
     live: '',
     featured: false,
   },
+  {
+    name: 'Artificial Intelligence Fundamentals',
+    description: 'Comprehensive AI coursework covering search algorithms, machine learning fundamentals, intelligent agents, and practical implementations including K-NN, MDP, and classification projects.',
+    skills: [FaPython, FaCode, FaChartBar, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/artificial-intelligence-fundamentals',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Data Mining and Analytics',
+    description: 'Comprehensive data mining coursework covering preprocessing, classification, clustering, and visualization. Includes real-world datasets, R/Python implementations, and practical applications in housing market and financial sector analysis.',
+    skills: [FaPython, FaChartBar, FaCode, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/data-mining-and-analytics',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Machine Learning & Deep Learning',
+    description: 'Comprehensive ML/DL coursework featuring PyTorch, computer vision, GANs, and practical projects. Includes CIFAR-10/MNIST implementations, music genre classification, and model deployment with ONNX.',
+    skills: [FaPython, FaCode, FaChartBar, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/machine-learning-deep-learning',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Object-Oriented Design Java',
+    description: 'Comprehensive Java OOP coursework featuring design patterns, SOLID principles, and practical implementations. Includes Minesweeper game, Factory pattern projects, and extensive study materials covering 10 chapters of design patterns.',
+    skills: [FaJava, FaCode, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/object-oriented-design-java',
+    live: '',
+    featured: false,
+  },
 ];
 
 // Helper function to get featured projects (top 3)
