@@ -1,5 +1,5 @@
 import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaJava, FaGlobe, FaCode, FaChartBar, FaHtml5, FaCss3Alt, FaJs, FaMap, FaCube } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs, SiBootstrap, SiJquery, SiMui, SiThreedotjs, SiVite, SiApache, SiGit, SiGithub, SiJupyter, SiUbuntu, SiLangchain, SiStreamlit, SiOracle } from 'react-icons/si';
+import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiCplusplus, SiRecoil, SiD3Dotjs, SiBootstrap, SiJquery, SiMui, SiThreedotjs, SiVite, SiApache, SiGit, SiGithub, SiJupyter, SiUbuntu, SiLangchain, SiStreamlit, SiOracle, SiApachekafka, SiApachemaven } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
 export interface Project {
@@ -209,6 +209,14 @@ export const projects: Project[] = [
     description: 'Full-featured web application for fetching, viewing, managing, and reviewing news articles. Supports CRUD operations, user reviews, and modern UI features.',
     skills: [FaNodeJs, SiExpress, SiMongodb, SiBootstrap, FaCode, SiGit, SiGithub],
     github: 'https://github.com/abhis201/News-API',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Spring Boot JPA & Kafka',
+    description: 'A robust Spring Boot application demonstrating advanced JPA entity relationships, RESTful APIs, and Kafka integration. Features include dynamic queries using JPA Specifications, external API consumption, and real-world business logic.',
+    skills: [FaJava, FaCode, FaChartBar, SiApachemaven, SiApachekafka],
+    github: 'https://github.com/abhis201/Spring-Boot-Project',
     live: '',
     featured: false,
   },
