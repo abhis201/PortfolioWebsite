@@ -34,7 +34,7 @@ export const projects: Project[] = [
     skills: [FaNodeJs, SiExpress, SiMongodb, FaCode],
     github: 'https://github.com/abhis201/nodejs-amazon-music-backend',
     live: '',
-    featured: true,
+    featured: false,
   },
   {
     name: 'Twitter Backend Clone',
@@ -163,6 +163,14 @@ export const projects: Project[] = [
     github: 'https://github.com/abhis201/RailGuard',
     live: '',
     featured: false,
+  },
+  {
+    name: 'Super Resolution Application',
+    description: 'Web-based tool for upscaling low-resolution images using advanced machine learning models (ESRGAN, Bicubic, SFTGAN). Provides a user-friendly interface for image enhancement, comparison, and network transfer.',
+    skills: [FaPython, FaHtml5, FaCss3Alt, FaJs, SiBootstrap, FaCode, FaChartBar, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/ESRGAN-Super-Resolution-Application',
+    live: '',
+    featured: true,
   },
 ];
 
