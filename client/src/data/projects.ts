@@ -204,6 +204,14 @@ export const projects: Project[] = [
     live: '',
     featured: false,
   },
+  {
+    name: 'News-API',
+    description: 'Full-featured web application for fetching, viewing, managing, and reviewing news articles. Supports CRUD operations, user reviews, and modern UI features.',
+    skills: [FaNodeJs, SiExpress, SiMongodb, SiBootstrap, FaCode, SiGit, SiGithub],
+    github: 'https://github.com/abhis201/News-API',
+    live: '',
+    featured: false,
+  },
 ];
 
 // Helper function to get featured projects (top 3)
