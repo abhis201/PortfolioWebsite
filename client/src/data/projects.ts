@@ -188,6 +188,14 @@ export const projects: Project[] = [
     live: '',
     featured: false,
   },
+  {
+    name: 'Socket Malware',
+    description: 'A Python-based socket malware project that extracts WiFi SSIDs and passwords from a target machine, aggregates credentials on a server, and manages password wordlists for penetration testing and research.',
+    skills: [FaPython, FaCode, SiGit, SiGithub, SiUbuntu],
+    github: 'https://github.com/abhis201/Socket-Malware',
+    live: '',
+    featured: false,
+  },
 ];
 
 // Helper function to get featured projects (top 3)
