@@ -172,6 +172,22 @@ export const projects: Project[] = [
     live: '',
     featured: true,
   },
+  {
+    name: 'Java LAN Chat Application',
+    description: 'A desktop chat application enabling real-time messaging and file transfer over LAN, featuring user authentication and a simple UI. Includes both server and client modules.',
+    skills: [FaJava, FaCode, FaChartBar, SiGit, SiGithub, FaHtml5],
+    github: 'https://github.com/abhis201/Java-LAN-chat',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'Eventer',
+    description: 'A desktop event management application built with Java, following the MVC architecture. It allows users to create, manage, and export events, with a user-friendly interface and robust data handling.',
+    skills: [FaJava, FaCode, FaChartBar, SiGit, SiGithub, FaHtml5],
+    github: 'https://github.com/abhis201/Eventer',
+    live: '',
+    featured: false,
+  },
 ];
 
 // Helper function to get featured projects (top 3)
