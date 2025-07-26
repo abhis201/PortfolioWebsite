@@ -148,6 +148,22 @@ export const projects: Project[] = [
     live: '',
     featured: false,
   },
+  {
+    name: 'Mass Shooting Analysis Model',
+    description: 'Analyzes and classifies mass shooting incidents using both tabular and satellite image data. Combines deep learning (CNN, ResNet), XGBoost, and custom data processing to predict risk levels and visualize incident locations.',
+    skills: [FaPython, SiGit, SiJupyter, SiStreamlit, FaChartBar, FaCode, SiGithub],
+    github: 'https://github.com/abhis201/mass-shooting-analysis-model',
+    live: '',
+    featured: false,
+  },
+  {
+    name: 'RailGuard - Railway Track Crack Detection',
+    description: 'Computer vision project for detecting cracks in railway tracks using the YOLOv8 deep learning model. Automates defect identification in rail infrastructure for improved safety and predictive maintenance.',
+    skills: [FaPython, SiGit, SiJupyter, SiStreamlit, FaChartBar, FaCode, SiGithub],
+    github: 'https://github.com/abhis201/RailGuard',
+    live: '',
+    featured: false,
+  },
 ];
 
 // Helper function to get featured projects (top 3)
