@@ -11,7 +11,7 @@ export default function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 0);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -36,96 +36,99 @@ export default function Nav() {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="text-xl font-bold text-foreground"
-        >
-          Abhishek S.
-        </motion.div>
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          menuOpen
+            ? 'bg-background backdrop-blur-lg border-b border-border'
+            : isScrolled
+              ? 'bg-background backdrop-blur-lg border-b border-border'
+              : 'bg-transparent'
+        }`}
+      >
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            className="text-xl font-bold text-foreground"
+          >
+            Abhishek S.
+          </motion.div>
 
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center space-x-8">
-          {navLinks.map((item) => (
-            item.href ? (
-              <li key={item.label}>
-                <Link href={item.href} className="relative group cursor-pointer font-semibold text-primary hover:underline">
+          {/* Desktop Nav */}
+          <ul className="hidden md:flex items-center space-x-8">
+            {navLinks.map((item) => (
+              item.href ? (
+                <li key={item.label}>
+                  <Link href={item.href} className="relative group cursor-pointer font-semibold text-primary hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ) : (
+                <motion.li
+                  key={item.label}
+                  whileHover={{ scale: 1.1 }}
+                  className="relative group cursor-pointer text-foreground"
+                  onClick={item.action ? item.action : undefined}
+                >
                   {item.label}
-                </Link>
-              </li>
-            ) : (
-              <motion.li
-                key={item.label}
-                whileHover={{ scale: 1.1 }}
-                className="relative group cursor-pointer text-foreground"
-                onClick={item.action ? item.action : undefined}
-              >
-                {item.label}
-                <motion.span
-                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left"
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                />
-              </motion.li>
-            )
-          ))}
-          
-          {/* Theme Toggle Button */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            {theme === 'light' ? (
-              <FaMoon className="w-5 h-5 text-foreground" />
-            ) : (
-              <FaSun className="w-5 h-5 text-foreground" />
-            )}
-          </motion.button>
-        </ul>
+                  <motion.span
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                  />
+                </motion.li>
+              )
+            ))}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {theme === 'light' ? (
+                <FaMoon className="w-5 h-5 text-foreground" />
+              ) : (
+                <FaSun className="w-5 h-5 text-foreground" />
+              )}
+            </motion.button>
+          </ul>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden flex items-center gap-4">
-          {/* Theme Toggle Button for Mobile */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            {theme === 'light' ? (
-              <FaMoon className="w-5 h-5 text-foreground" />
-            ) : (
-              <FaSun className="w-5 h-5 text-foreground" />
-            )}
-          </motion.button>
-          
-          <button
-            className="text-2xl text-primary focus:outline-none"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          {/* Mobile Hamburger */}
+          <div className="md:hidden flex items-center gap-4">
+            {/* Theme Toggle Button for Mobile */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {theme === 'light' ? (
+                <FaMoon className="w-5 h-5 text-foreground" />
+              ) : (
+                <FaSun className="w-5 h-5 text-foreground" />
+              )}
+            </motion.button>
+            <button
+              className="text-2xl text-primary focus:outline-none"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu & Backdrop rendered outside nav for full coverage */}
       <AnimatePresence>
         {menuOpen && (
           <>
             <motion.div
-              className="fixed inset-0 z-40 bg-black/40 md:hidden"
+              className="fixed inset-0 z-40 bg-black/50 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -162,7 +165,10 @@ export default function Nav() {
                     <li
                       key={item.label}
                       className="block text-lg font-semibold text-primary py-2 cursor-pointer"
-                      onClick={item.action ? item.action : undefined}
+                      onClick={() => {
+                        if (item.action) item.action();
+                        setMenuOpen(false);
+                      }}
                     >
                       {item.label}
                     </li>
@@ -173,6 +179,6 @@ export default function Nav() {
           </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }
