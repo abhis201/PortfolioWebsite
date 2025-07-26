@@ -196,6 +196,14 @@ export const projects: Project[] = [
     live: '',
     featured: false,
   },
+  {
+    name: 'Denial-of-Service (UDP DoS Script)',
+    description: 'Demonstrates a simple UDP-based Denial-of-Service (DoS) attack script for educational and research purposes. Allows users to send UDP packets to a target IP and port, simulating a DoS scenario. Includes documentation and guidance on DoS concepts and safe usage.',
+    skills: [FaPython, SiUbuntu],
+    github: 'https://github.com/abhis201/Denial-of-Service',
+    live: '',
+    featured: false,
+  },
 ];
 
 // Helper function to get featured projects (top 3)
