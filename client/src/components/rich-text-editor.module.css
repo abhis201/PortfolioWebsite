@@ -1,0 +1,7 @@
+.darkEditor :global(.ql-editor) {
+  color: white;
+}
+.darkEditor :global(.ql-editor.ql-blank::before) {
+  color: #b0b0b0 !important;
+  opacity: 1 !important;
+}

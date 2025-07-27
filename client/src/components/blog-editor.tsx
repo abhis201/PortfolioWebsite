@@ -210,7 +210,6 @@ export default function BlogEditor() {
                   value={formData.content}
                   onChange={(content) => setFormData(prev => ({ ...prev, content }))}
                   placeholder="Write your blog post content with inline images..."
-                  rows={20}
                 />
               </CardContent>
             </Card>
