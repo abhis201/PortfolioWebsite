@@ -1,32 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Get environment variables with fallbacks for development
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-// Debug: Log all available environment variables
-console.log('🔍 Environment Variables Debug:');
-console.log('import.meta.env:', import.meta.env);
-console.log('VITE_SUPABASE_URL:', supabaseUrl);
-console.log('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? '✅ Set' : '❌ Missing');
-
-// For development, you can use placeholder values if env vars are not set
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('❌ Missing Supabase environment variables!');
-  console.warn('📝 Please check your .env file contains:');
-  console.warn('VITE_SUPABASE_URL=your_supabase_url');
-  console.warn('VITE_SUPABASE_ANON_KEY=your_anon_key');
-  console.warn('💡 Make sure to restart your dev server after creating/updating .env');
-  
-  // In development, you can provide placeholder values to prevent crashes
-  if (import.meta.env.DEV) {
-    console.warn('⚠️ Using placeholder values for development. Blog functionality will not work.');
-  }
-}
-
 export const supabase = createClient(
-  supabaseUrl || 'https://placeholder.supabase.co',
-  supabaseAnonKey || 'placeholder-key'
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
 // Blog types

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import React from "react";
 import { motion } from "framer-motion";
 import BlogNav from "@/components/blog-nav";
@@ -6,16 +5,11 @@ import Cursor from "@/components/cursor";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, User, ArrowRight, Clock } from "lucide-react";
+import { Calendar, User, ArrowRight } from "lucide-react";
 import { supabase, type Blog } from "@/lib/supabase";
-import { checkEnvVars } from "@/lib/env-checker";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Blog() {
-  // Check environment variables on component mount
-  React.useEffect(() => {
-    checkEnvVars();
-  }, []);
 
   const { data: blogs, isLoading, error } = useQuery({
     queryKey: ['blogs'],

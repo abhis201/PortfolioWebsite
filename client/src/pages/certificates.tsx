@@ -1,10 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { FaUniversity, FaJava, FaDatabase, FaPython, FaCloud, FaRobot, FaFeatherAlt } from 'react-icons/fa';
-import { SiSpring, SiHibernate, SiApachekafka, SiOracle, SiLinkedin, SiUdemy, SiHackerone } from 'react-icons/si';
+import { FaUniversity, FaJava, FaDatabase, FaPython} from 'react-icons/fa';
+import { SiSpring, SiApachekafka, SiOracle } from 'react-icons/si';
 import { Link } from 'wouter';
-import ParticleBackground from '@/components/particle-background';
 
 const certificates = [
   {
@@ -110,92 +109,89 @@ export default function Certificates() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
-      <ParticleBackground />
-      <section className="py-20 min-h-screen bg-gradient-to-br from-background via-background to-muted/20 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+    <section className="py-20 min-h-screen bg-gradient-to-br from-background via-background to-muted/20 relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="flex justify-center mb-8">
+          <Link href="/" className="inline-block px-6 py-2 rounded-full bg-primary text-primary-foreground font-semibold shadow hover:bg-primary/90 transition">
+            ← Back to Portfolio
+          </Link>
+        </div>
+        <h2 className="text-3xl font-bold text-center mb-6 text-foreground">Certifications & Achievements</h2>
+        <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto px-4 sm:px-6">
+          A showcase of my commitment to continuous learning and technical excellence. Each certificate represents a milestone in mastering new technologies, frameworks, and industry best practices. Explore the credentials that power my expertise!
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+          {certificates.map((cert, idx) => (
+            <motion.div
+              key={cert.title + cert.issuer}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+            >
+              <Card className="p-6 h-full shadow-lg border-2 border-primary/20 bg-card/90 backdrop-blur-md rounded-xl flex flex-col justify-between group">
+                {cert.image && (
+                  <div className="w-full flex justify-center mb-4">
+                    <img
+                      src={cert.image}
+                      alt={cert.title + ' certificate'}
+                      className="rounded-lg object-contain w-full max-h-40 transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:z-10 cursor-pointer"
+                      style={{ background: 'var(--card)' }}
+                      onClick={() => setModalImg(cert.image!)}
+                    />
+                  </div>
+                )}
+                <div className="flex items-center gap-4 mb-4">
+                  {cert.icon && <cert.icon className="w-8 h-8 text-primary" />}
+                  <div>
+                    <h3 className="text-lg font-semibold leading-tight text-foreground">{cert.title}</h3>
+                    <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+                  </div>
+                </div>
+                <div className="mb-2 text-sm text-muted-foreground">Issued {cert.date}</div>
+                {cert.credentialId && (
+                  <div className="mb-2 text-xs text-muted-foreground">Credential ID: {cert.credentialId}</div>
+                )}
+                <div className="flex flex-wrap gap-2 mt-2 mb-4">
+                  {cert.skills.map((skill) => (
+                    <span key={skill} className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+                {cert.file && (
+                  <a
+                    href={cert.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto text-primary hover:underline text-sm font-semibold"
+                  >
+                    View Certificate
+                  </a>
+                )}
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+      {modalImg && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm transition-all"
+          onClick={handleOverlayClick}
         >
-          <div className="flex justify-center mb-8">
-            <Link href="/" className="inline-block px-6 py-2 rounded-full bg-primary text-primary-foreground font-semibold shadow hover:bg-primary/90 transition">
-              ← Back to Portfolio
-            </Link>
-          </div>
-          <h2 className="text-3xl font-bold text-center mb-6 text-foreground">Certifications & Achievements</h2>
-          <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto px-4 sm:px-6">
-            A showcase of my commitment to continuous learning and technical excellence. Each certificate represents a milestone in mastering new technologies, frameworks, and industry best practices. Explore the credentials that power my expertise!
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-            {certificates.map((cert, idx) => (
-              <motion.div
-                key={cert.title + cert.issuer}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <Card className="p-6 h-full shadow-lg border-2 border-primary/20 bg-card/90 backdrop-blur-md rounded-xl flex flex-col justify-between group">
-                  {cert.image && (
-                    <div className="w-full flex justify-center mb-4">
-                      <img
-                        src={cert.image}
-                        alt={cert.title + ' certificate'}
-                        className="rounded-lg object-contain w-full max-h-40 transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:z-10 cursor-pointer"
-                        style={{ background: 'var(--card)' }}
-                        onClick={() => setModalImg(cert.image!)}
-                      />
-                    </div>
-                  )}
-                  <div className="flex items-center gap-4 mb-4">
-                    {cert.icon && <cert.icon className="w-8 h-8 text-primary" />}
-                    <div>
-                      <h3 className="text-lg font-semibold leading-tight text-foreground">{cert.title}</h3>
-                      <p className="text-sm text-muted-foreground">{cert.issuer}</p>
-                    </div>
-                  </div>
-                  <div className="mb-2 text-sm text-muted-foreground">Issued {cert.date}</div>
-                  {cert.credentialId && (
-                    <div className="mb-2 text-xs text-muted-foreground">Credential ID: {cert.credentialId}</div>
-                  )}
-                  <div className="flex flex-wrap gap-2 mt-2 mb-4">
-                    {cert.skills.map((skill) => (
-                      <span key={skill} className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                  {cert.file && (
-                    <a
-                      href={cert.file}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto text-primary hover:underline text-sm font-semibold"
-                    >
-                      View Certificate
-                    </a>
-                  )}
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-        {modalImg && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm transition-all"
-            onClick={handleOverlayClick}
-          >
-            <img
-              src={modalImg}
-              alt="Certificate Full Size"
-              className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl border-4 border-card animate-fadeIn"
-              style={{ background: 'var(--card)' }}
-            />
-          </div>
-        )}
-      </section>
-    </div>
+          <img
+            src={modalImg}
+            alt="Certificate Full Size"
+            className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl border-4 border-card animate-fadeIn"
+            style={{ background: 'var(--card)' }}
+          />
+        </div>
+      )}
+    </section>
   );
 } 

@@ -22,9 +22,7 @@ export default function Home() {
     };
   }, []);
 
-  // Memoize featured projects to avoid recalculating on every render
   const featuredProjects = useMemo(() => getFeaturedProjects(), []);
-  const allProjects = useMemo(() => getAllProjects(), []);
 
   return (
     <motion.div
@@ -41,7 +39,7 @@ export default function Home() {
         <About />
         <Skills />
         <Experience />
-        <FeaturedProjectsSection projects={allProjects} />
+        <FeaturedProjectsSection projects={featuredProjects} />
         <BlogPreview />
         <Contact />
       </main>

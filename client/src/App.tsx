@@ -12,7 +12,7 @@ import Admin from "@/pages/admin";
 import NotFound from "@/pages/not-found";
 import Certificates from '@/pages/certificates';
 import Projects from '@/pages/projects';
-import { motion, AnimatePresence } from "framer-motion";
+import {AnimatePresence } from "framer-motion";
 
 function Router() {
   const [location] = useLocation();
@@ -20,8 +20,8 @@ function Router() {
   const [shouldRenderPages, setShouldRenderPages] = useState(true);
 
   useEffect(() => {
-    // Skip loading screen when navigating to home page
-    if (location === '/') {
+    // Skip loading screen when navigating to home or admin page
+    if (location === '/' || location === '/admin') {
       setIsLoading(false);
       setShouldRenderPages(true);
       return;
