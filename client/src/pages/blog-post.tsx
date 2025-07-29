@@ -7,12 +7,61 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Calendar, User, ArrowLeft, Clock, Tag } from "lucide-react";
+import { AdminAuthModal } from "./admin-auth";
+import RichTextEditor from "@/components/rich-text-editor";
 import { supabase, type BlogWithMedia } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect, useRef } from "react";
 
 export default function BlogPost() {
   const [, setLocation] = useLocation();
   const slug = window.location.pathname.split('/').pop();
+  const [editMode, setEditMode] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+  const [authError, setAuthError] = useState("");
+  const [editingContent, setEditingContent] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+
+  // Secret unlock: press 'e' then 'd' then 'i' then 't' in order
+  const sequenceRef = useRef("");
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      sequenceRef.current += e.key.toLowerCase();
+      if (sequenceRef.current.endsWith("edit")) {
+        setShowAuth(true);
+        sequenceRef.current = "";
+      }
+      if (sequenceRef.current.length > 4) sequenceRef.current = sequenceRef.current.slice(-4);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  const handleValidateAdmin = (inputPassword: string) => {
+    if (inputPassword === import.meta.env.VITE_ADMIN_PASS) {
+      setShowAuth(false);
+      setEditMode(true);
+      setEditingContent(blog?.content ?? "");
+      setAuthError("");
+    } else {
+      setAuthError("Invalid password");
+    }
+  };
+
+  const handleSaveEdit = async () => {
+    if (!blog || !editingContent) return;
+    setIsSaving(true);
+    const { error } = await supabase
+      .from('blogs')
+      .update({ content: editingContent })
+      .eq('id', blog.id);
+    setIsSaving(false);
+    if (!error) {
+      window.location.reload();
+    } else {
+      alert("Failed to save changes.");
+    }
+  };
 
   const { data: blog, isLoading, error } = useQuery({
     queryKey: ['blog', slug],
@@ -101,6 +150,10 @@ export default function BlogPost() {
       <Cursor />
       <BlogNav />
 
+      {showAuth && (
+        <AdminAuthModal onValidate={handleValidateAdmin} error={authError} />
+      )}
+
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
         {/* Back Button */}
         <motion.div
@@ -183,10 +236,28 @@ export default function BlogPost() {
         >
           <Card className="p-8">
             <CardContent className="p-0">
-              <div 
-                className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-              />
+              {editMode ? (
+                <>
+                  <RichTextEditor
+                    value={editingContent ?? ""}
+                    onChange={setEditingContent}
+                    placeholder="Edit blog content..."
+                  />
+                  <div className="flex gap-4 mt-4">
+                    <Button onClick={handleSaveEdit} disabled={isSaving}>
+                      {isSaving ? "Saving..." : "Save Changes"}
+                    </Button>
+                    <Button variant="outline" onClick={() => setEditMode(false)}>
+                      Cancel
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <div 
+                  className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+              )}
             </CardContent>
           </Card>
         </motion.div>
